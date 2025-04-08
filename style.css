@@ -1,0 +1,15 @@
+body{
+    padding-left:50px;
+    padding-top: 20px;
+}
+
+.Direct-box{
+    display: flex;
+    width: fit-content;
+    margin: auto;
+}
+
+h2{
+    margin-right: 30px;
+    font-size: 120px;
+}

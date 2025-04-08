@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <link rel="stylesheet" href="style.css" />
+</head>
 <body>
-<h1>HTML Geolocation</h1>
-<p>Click the button to get your coordinates.</p>
+<h1>HTML Way Finder</h1>
+<p>Click the button to get direction to NYU Dorm</p>
 
 <button onclick="getLocation()">Try It</button>
 
 <p id="demo"></p>
 
-<img src="assets/Arrow.jpg" class="Arrow">
+<div class="Direct-box">
+  <h2 id="Head"> </h2>
+  <h2 id="direction-vert"></h2>
+  <h2 id="direction-hori"></h2>
+</div>
+
 <script>
 const x = document.getElementById("demo");
+const Head = document.getElementById("Head");
+const directionVert = document.getElementById("direction-vert");
+const directionHori = document.getElementById("direction-hori");
 
-let DormLat = 40.6978268;
-let DormLong = -73.9934513;
+const DormLat = 40.6978268;
+const DormLong = -73.9934513;
 
 let TestLat = 40.698535;
 let TestLong = -73.996909;
@@ -31,11 +42,29 @@ function getLocation() {
 
 function success(position) {
 
-  x.innerHTML = "Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude;
+  x.innerHTML = "<b>Your location:</b>" + "<br>Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude + "<br>" + "<br><b>Dorm Location:</b>" + "<br>Latitude: " + DormLat + 
+  "<br>Longitude: " + DormLong;
 
   meLat = position.coords.latitude;
   meLong = position.coords.longitude;
+
+  if (DormLat > meLat){
+    Head.innerHTML = "Head"
+    directionVert.innerHTML = "North"
+  }else{
+    Head.innerHTML = "Head"
+    directionVert.innerHTML = "South"
+  }
+
+  if (DormLong > meLong){
+    Head.innerHTML = "Head"
+    directionHori.innerHTML = "East"
+  }else{
+    Head.innerHTML = "Head"
+    directionHori.innerHTML = "West"
+  }
+
 
 }
 
@@ -46,4 +75,5 @@ function error() {
 
 </body>
 </html>
+
 
