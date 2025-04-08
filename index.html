@@ -1,22 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="  " content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="style.css" />
-	<script src="script.js"></script>
-	<title> Space-Holder </title>
-</head>
 <body>
-	<p id="info">
-        update the longitude and latitude coordinates in the JavaScript code to match your exact location...
-      </p>
-    <audio id="soundy" src="https://cdn.glitch.global/5a1de797-b0c3-4c78-a06b-c9254bc97c34/gateOpening.mp3?v=1680968913536"></audio>
-    <div>
-     <button onclick="checkLocation()">
-       start walk
-      </button>
-      
-    </div> 
+<h1>HTML Geolocation</h1>
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<img src="assets/Arrow.jpg" class="Arrow">
+<script>
+const x = document.getElementById("demo");
+
+let DormLat = 40.6978268;
+let DormLong = -73.9934513;
+
+let TestLat = 40.698535;
+let TestLong = -73.996909;
+
+let meLat = 0;
+let meLong = 0;
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, error);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function success(position) {
+
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+
+  meLat = position.coords.latitude;
+  meLong = position.coords.longitude;
+
+}
+
+function error() {
+  alert("Sorry, no position available.");
+}
+</script>
+
 </body>
 </html>
+
